@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +14,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $RoleData = [
+            ['name' => 'client'],
+            ['name' => 'admin'],
+        ];
+        // Insertar los roles en la base de datos
+        foreach ($RoleData as $role) {
+            Role::create($role);
+        }
+
+        User::create(
+            [
+                'name' => 'SAAdmin',
+                'paternal' => 'SAAdmin', 
+                'maternal' => 'SAAdmin',
+                'birthdate' => '2004-02-02',
+                'gender' => "M",
+                'email' => 'menesesmaturanoalexis33@gmail.com',
+                'password' => base64_encode('Knives1.'),
+                'role_id' => 2
+            ],
+        );
+
     }
 }

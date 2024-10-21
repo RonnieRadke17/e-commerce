@@ -18,8 +18,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'paternal',
+        'maternal',
+        'birthdate',
+        'gender',
         'email',
         'password',
+        'is_suspended',
+        'role_id',
     ];
 
     /**
@@ -44,4 +50,34 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //relations with events ALEXIS metodo
+    
+    /* public function events()
+    {
+        return $this->belongsToMany(Event::class)->withTimestamps();
+    } */
+
+    //relations with payments
+    public function payments()
+    {
+        return $this->belongsToMany(Event::class, 'payments')->withTimestamps();
+    }
+
+    /* //relations with roles
+    public function roles()
+    {
+        return $this->belongsTo(Role::class)->withTimestamps();
+    } */
+    // Relación con el modelo Role
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'event_user', 'user_id', 'event_id');
+    }
+    
+
 }
