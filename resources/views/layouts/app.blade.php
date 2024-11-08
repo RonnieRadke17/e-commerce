@@ -186,7 +186,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer  aqui le tiene que mover angel-->
     <footer class="bg-red-600 text-white text-center py-4">
         <p>&copy; © 2024 E-commerce. Todos los derechos reservados.</p>
         <div class="mt-2">
