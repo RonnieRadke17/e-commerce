@@ -7,12 +7,19 @@ use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ErrorsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserEventController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 /* Route::get('/', function () { 
     return redirect()->route('products.index');
 }); */
 
 Route::resource('products', ProductController::class);
+
+Route::resource('users', UserController::class);//midleware
+Route::resource('categories', CategoryController::class);//midleware
+Route::resource('brands', BrandController::class);//midleware
 
 Route::get('/', [UserEventController::class, 'index'])->name('home');//ruta que muestra la pagina principal
 
