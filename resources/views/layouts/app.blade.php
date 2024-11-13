@@ -159,7 +159,7 @@
 
                 <div class="mt-4 border-t border-gray-200 pt-4">
                     <a href="https://dashboard.stripe.com/test/payments" target="_blank" class="text-gray-600 hover:bg-red-100 hover:text-red-700 block px-3 py-2 rounded-md text-base font-medium">Transacciones</a>
-                    <a href="#" class="text-gray-600 hover:bg-red-100 hover:text-red-700 block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
+                    <a href="#" class="text-gray-600 hover:bg-red-100 hover:text-red-700 block px-3 py-2 rounded-md text-base font-medium">Users</a>
                     <a href="{{ route('logout') }}" class="text-gray-600 hover:bg-red-100 hover:text-red-700 block px-3 py-2 rounded-md text-base font-medium">Salir</a>
                 </div>
             </div>
@@ -196,8 +196,61 @@
     </footer>
 
     <script>
-        // Funciones para mostrar y cerrar el modal
-        // Mantiene la funcionalidad JS como estaba
+    // Función para mostrar el modal de éxito
+    function showModal() {
+        var modal = document.getElementById('successModal');
+        if (modal) {
+            modal.style.display = 'flex';
+        }
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+        var modal = document.getElementById('successModal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Evento para mostrar el modal cuando se cargue la página
+    document.addEventListener('DOMContentLoaded', function() {
+        showModal();
+
+        // Agregar evento al botón de cerrar
+        var closeButton = document.getElementById('closeModal');
+        if (closeButton) {
+            closeButton.addEventListener('click', closeModal);
+        }
+
+        // Cerrar el modal al hacer clic fuera del contenido
+        window.addEventListener('click', function(e) {
+            var modal = document.getElementById('successModal');
+            if (e.target == modal) {
+                closeModal();
+            }
+        });
+
+        // Mostrar/Ocultar el menú lateral
+        document.getElementById('user-menu-button').addEventListener('click', function() {
+            var menu = document.getElementById('lateral-menu');
+            var overlay = document.getElementById('lateral-menu-overlay');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                overlay.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+                overlay.classList.add('hidden');
+            }
+        });
+
+        // Cerrar el menú lateral al hacer clic en el overlay
+        document.getElementById('lateral-menu-overlay').addEventListener('click', function() {
+            var menu = document.getElementById('lateral-menu');
+            var overlay = document.getElementById('lateral-menu-overlay');
+            menu.classList.add('hidden');
+            overlay.classList.add('hidden');
+        });
+    });
     </script>
 </body>
 </html>

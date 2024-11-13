@@ -9,11 +9,12 @@
             <div class="p-4">
                 <h3 class="text-lg font-semibold mb-2">Ruffles</h3>
                 <p class="text-gray-600">Descripción del producto 1.</p>
-                <!-- Botón de editar -->
-                <button class="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
-                    {{-- <a href="{{route('products.edit')}}" class="fas fa-edit"></a> --}}
-                    <a href="#" class="fas fa-edit"></a>
-                </button>
+                @if (Auth::check() && Auth::user()->role->name === 'admin')
+                    <!-- Botón de editar -->
+                    <button class="absolute top-2 right-2 bg-blue-200 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                @endif
             </div>
         </div>
 
@@ -24,7 +25,7 @@
                 <h3 class="text-lg font-semibold mb-2">Skittles</h3>
                 <p class="text-gray-600">Descripción del producto 2.</p>
                 <!-- Botón de editar -->
-                <button class="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
+                <button class="absolute top-2 right-2 bg-blue-200 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
                     <i class="fas fa-edit"></i>
                 </button>
             </div>
@@ -37,7 +38,7 @@
                 <h3 class="text-lg font-semibold mb-2">Producto 3</h3>
                 <p class="text-gray-600">Descripción del producto 3.</p>
                 <!-- Botón de editar -->
-                <button class="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
+                <button class="absolute top-2 right-2 bg-blue-200 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
                     <i class="fas fa-edit"></i>
                 </button>
             </div>
@@ -50,7 +51,7 @@
                 <h3 class="text-lg font-semibold mb-2">Monster Ultra Paradise</h3>
                 <p class="text-gray-600">Bebida energética sin azúcar 473ml</p>
                 <!-- Botón de editar -->
-                <button class="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
+                <button class="absolute top-2 right-2 bg-blue-200 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
                     <i class="fas fa-edit"></i>
                 </button>
             </div>
@@ -63,7 +64,7 @@
                 <h3 class="text-lg font-semibold mb-2">Skittles</h3>
                 <p class="text-gray-600">Descripción del producto 2.</p>
                 <!-- Botón de editar -->
-                <button class="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
+                <button class="absolute top-2 right-2 bg-blue-200 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
                     <i class="fas fa-edit"></i>
                 </button>
             </div>
@@ -76,16 +77,18 @@
                 <h3 class="text-lg font-semibold mb-2">Producto 3</h3>
                 <p class="text-gray-600">Descripción del producto 3.</p>
                 <!-- Botón de editar -->
-                <button class="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
+                <button class="absolute top-2 right-2 bg-blue-200 text-white p-2 rounded-full shadow hover:bg-blue-600 transition duration-300">
                     <i class="fas fa-edit"></i>
                 </button>
             </div>
         </div>
 
-    <!-- Floating Action Button (FAB) -->
-    <<button class="fixed bottom-8 right-8 bg-yellow-400 text-white w-16 h-16 rounded-full shadow-lg hover:bg-yellow-500 transition duration-300 flex items-center justify-center">
-    <a href="{{route('products.create')}}" class="fas fa-plus text-white text-2xl"></a>
-</button>
+
+        @if (Auth::check() && Auth::user()->role->name === 'admin')
+            <button class="fixed bottom-8 right-8 bg-yellow-400 text-white w-16 h-16 rounded-full shadow-lg hover:bg-yellow-500 transition duration-300 flex items-center justify-center">
+                <a href="{{ route('products.create') }}" class="fas fa-plus text-white text-2xl"></a>
+            </button>
+        @endif
 
 
 </main>
