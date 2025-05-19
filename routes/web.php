@@ -11,18 +11,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 
-/* Route::get('/', function () { 
-    return redirect()->route('products.index');
-}); */
-
-Route::resource('products', ProductController::class);
 
 Route::resource('users', UserController::class);//midleware
 Route::resource('categories', CategoryController::class);//midleware
 Route::resource('brands', BrandController::class);//midleware
+Route::resource('products', ProductController::class);//midleware
 
 Route::get('/', [UserEventController::class, 'index'])->name('home');//ruta que muestra la pagina principal
-
 
 //restablecimiento de contrasena
 Route::controller(ResetPasswordController::class)->group(function () {
@@ -58,5 +53,3 @@ Route::get('/login',[LoginController::class,'showLoginForm'])->name('login');//r
 Route::post('/signin',[LoginController::class,'login'] )->name('signin');//ruta que inicia sesion al usr 
 
 Route::get('/logout',[LogoutController::class,'logout'] )->name('logout');//ruta que cierra sesion al usr
-
-
